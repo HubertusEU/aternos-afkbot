@@ -1,4 +1,6 @@
 const mineflayer = require('mineflayer')
+const express = require('express'); 
+const app = express();
 const fs = require('fs');
 let rawdata = fs.readFileSync('config.json');
 let data = JSON.parse(rawdata);
@@ -57,3 +59,10 @@ bot.on('spawn',function() {
     connected=1;
 });
 
+app.get('/', (req, res) => {
+  res.send('This bot is working.')
+});
+
+app.listen(3000, () => {
+  console.log('server started');
+});
